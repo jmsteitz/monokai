@@ -4,6 +4,12 @@ atom-text-editor {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
 
+  // added from 'One Dark'
+  .line.cursor-line {
+    background-color: @syntax-cursor-line;
+  }
+  //
+
   .invisible-character {
     color: @syntax-invisible-character-color;
   }
@@ -36,14 +42,21 @@ atom-text-editor {
     background-color: @syntax-selection-color;
   }
 
-  .search-results .syntax--marker .region {
-    background-color: transparent;
-    border: 1px solid @syntax-result-marker-color;
+  // find + replace, changed to 'One Dark'
+  .find-result .region.region.region,
+  .current-result .region.region.region {
+    border-radius: 2px;
+    background-color: @syntax-result-marker-color;
+    transition: border-color .4s;
   }
-
-  .search-results .syntax--marker.current-result .region {
-    border: 1px solid @syntax-result-marker-color-selected;
+  .find-result .region.region.region {
+    border: 2px solid transparent;
   }
+  .current-result .region.region.region {
+    border: 2px solid @syntax-result-marker-color-selected;
+    transition-duration: .1s;
+  }
+  //
 
   .syntax--gfm {
     .syntax--markup {
@@ -140,6 +153,13 @@ atom-text-editor {
   color: @pink !important;
 }
 
+// type specification in Julia syntax
+.syntax--relation {
+  &.syntax--julia {
+    color: @blue !important;
+  }
+}
+
 .syntax--meta.syntax--tag {
   color: @syntax-text-color;
 }
@@ -154,7 +174,7 @@ atom-text-editor {
 }
 
 .syntax--string {
-  color: @yellow;
+  color: @orange;
 }
 
 .syntax--support {
@@ -165,7 +185,6 @@ atom-text-editor {
 
   &.syntax--class,
   &.syntax--type {
-    font-style: italic;
     color: @blue;
   }
 }
